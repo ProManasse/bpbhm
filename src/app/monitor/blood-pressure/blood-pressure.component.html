@@ -1,0 +1,77 @@
+<div class="container" style="padding: 5%;">
+    <div class="row">
+        <h1 style="font-weight: bolder; font-family: Georgia, 'Times New Roman', Times, serif;">Blood-Pressure-Based
+            Health Monitoring</h1>
+        <h4 style="font-style: italic; font-family: 'Times New Roman', Times, serif;">It displays all the changes made
+            over time. You can add more by clicking on the floating button at the end of the page.</h4>
+    </div>
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-md-8">
+            <mat-tab-group headerPosition="above" mat-stretch-tabs="false" mat-align-tabs="end">
+                <mat-tab label="View">
+                    <div style="display: block">
+                        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels"
+                            [options]="barChartOptions" [legend]="barChartLegend">
+                        </canvas>
+                    </div>
+                </mat-tab>
+                <mat-tab label="New Record">
+                    <h3 style="font-family: 'Times New Roman', Times, serif;">Add New Records</h3>
+                    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+                        <p>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Diastolic</mat-label>
+                                <input matInput placeholder="usernname" [(ngModel)]="diastolic" name="diastolic" required>
+                                <mat-icon matSuffix>person</mat-icon>
+                                <mat-hint>e.g 80</mat-hint>
+                                <mat-error>
+                                    Please provide a valid diastolic value
+                                </mat-error>
+                            </mat-form-field>
+                        </p>
+                        <p>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Systolic</mat-label>
+                                <input matInput placeholder="password" [(ngModel)]="systolic" name="systolic" required>
+                                <mat-icon matSuffix>vpn_key</mat-icon>
+                                <mat-hint>e.g. 120</mat-hint>
+                                <mat-error>
+                                    Please provide a valid systolic value
+                                </mat-error>
+                            </mat-form-field>
+                        </p>
+                        <p>
+                            <button mat-raised-button color="primary">Submit</button>
+                        </p>
+                    </form>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+        <div class="col-md-4">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title-group>
+                        <mat-card-title>Musoni Roger</mat-card-title>
+                        <mat-card-subtitle>Patient</mat-card-subtitle>
+                        <img mat-card-sm-image
+                            src="https://i.ibb.co/ns8LTTv/businessman-icon-vector-male-avatar-profile-image-profile-businessman-icon-vector-male-avatar-profil.webp">
+                    </mat-card-title-group>
+                </mat-card-header>
+                <mat-card-content>
+                    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
+                        [matMenuTriggerFor]="menu">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+</div>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+    </button>
+</mat-menu>
